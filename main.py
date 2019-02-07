@@ -1,8 +1,13 @@
 import json
 import sys
+import requests
 
-with open('db.json') as file:
-	db = json.load(file)
+with open('config.json') as file:
+	config = json.load(file)
+
+response = requests.get(config['db_url'])
+print(response.status_code)
+db = response.json()
 
 if len(sys.argv) < 2:
 	print("Usage: main.py <matricule>")
