@@ -2,7 +2,7 @@
 
 ## Configuration
 
-```json
+```javascript
 {
 	"password": "your_password"
 }
