@@ -14,7 +14,7 @@ def searchStudent(matricule, indexedDB):
 	try:
 		return indexedDB[matricule]['npetu']
 	except KeyError:
-		return 0
+		return None
 
 if __name__ == "__main__":
 	with open('config.json') as file:
