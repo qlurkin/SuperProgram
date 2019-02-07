@@ -2,19 +2,6 @@ import json
 import sys
 import requests
 
-with open('config.json') as file:
-	config = json.load(file)
-
-response = requests.get(config['db_url'])
-print(response.status_code)
-db = response.json()
-
-if len(sys.argv) < 2:
-	print("Usage: main.py <matricule>")
-	sys.exit()
-
-matricule = sys.argv[1]
-
 def createIndexedDB(db):
 	indexedDB = {}
 
@@ -23,11 +10,21 @@ def createIndexedDB(db):
 
 	return indexedDB
 
-indexedDB = createIndexedDB(db)
-
 def searchStudent(matricule, indexedDB):
-	return indexedDB[matricule]['npetu']
+	try:
+		return indexedDB[matricule]['npetu']
+	except KeyError:
+		return None
 
-
-print(searchStudent(matricule, indexedDB))
+if __name__ == "__main__":
+	with open('config.json') as file:
+		config = json.load(file)
+	response = requests.get(config['db_url'])
+	db = response.json()
+	if len(sys.argv) < 2:
+		print("Usage: main.py <matricule>")
+		sys.exit()
+	matricule = sys.argv[1]
+	indexedDB = createIndexedDB(db)
+	print(searchStudent(matricule, indexedDB))
 
