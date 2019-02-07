@@ -1,1 +1,1 @@
-print("truc")
+print("truc truc truc")
