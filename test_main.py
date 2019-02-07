@@ -2,18 +2,15 @@ import unittest
 import main
 
 class Test(unittest.TestCase):
-	def test_search(self):
-		indexedDB = {
+	def setUp(self):
+		self.indexedDB = {
 			"11111": {"npetu": "Lurkin"}
 		}
 
-		self.assertEqual(main.searchStudent("11111", indexedDB), "Lurkin")
+	def test_search(self):
+		self.assertEqual(main.searchStudent("11111", self.indexedDB), "Lurkin")
 
 	def test_not_found(self):
-		indexedDB = {
-			"11111": {"npetu": "Lurkin"}
-		}
-
-		self.assertEqual(main.searchStudent("11112", indexedDB), None)
+		self.assertEqual(main.searchStudent("11112", self.indexedDB), None)
 
 unittest.main()
