@@ -2,8 +2,8 @@
 
 ## Configuration
 
-json`
+```json
 {
 	"password": "your_password"
 }
-`
+```
