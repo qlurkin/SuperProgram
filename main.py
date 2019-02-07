@@ -15,11 +15,19 @@ if len(sys.argv) < 2:
 
 matricule = sys.argv[1]
 
-indexedDB = {}
+def createIndexedDB(db):
+	indexedDB = {}
 
-for student in db:
-	indexedDB[student['matetu']] = student
+	for student in db:
+		indexedDB[student['matetu']] = student
+
+	return indexedDB
+
+indexedDB = createIndexedDB(db)
+
+def searchStudent(matricule, indexedDB):
+	return indexedDB[matricule]['npetu']
 
 
-print(indexedDB[matricule]['npetu'])
+print(searchStudent(matricule, indexedDB))
 
