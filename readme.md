@@ -5,6 +5,6 @@
 
 ```javascript
 {
-	"password": "your_password"
+	"db_url": "http://your.db.url.com"
 }
 ```
